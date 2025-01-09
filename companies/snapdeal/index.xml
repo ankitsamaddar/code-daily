@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Snapdeal on Coding Daily</title><link>http://codedaily.duckdns.org/companies/snapdeal/</link><description>Recent content in Snapdeal on Coding Daily</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://codedaily.duckdns.org/companies/snapdeal/index.xml" rel="self" type="application/rss+xml"/><item><title>Print Anagrams Together</title><link>http://codedaily.duckdns.org/geeksforgeeks/print-anagrams-together/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/geeksforgeeks/print-anagrams-together/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given an array of strings, group all anagrams together. Anagrams are words that contain the same characters but in a different order. The groups should maintain the order of their appearance in the original array.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Input: &lt;code>arr[] = [&amp;quot;act&amp;quot;, &amp;quot;god&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;dog&amp;quot;, &amp;quot;tac&amp;quot;]&lt;/code>&lt;/li>
+&lt;li>Output: &lt;code>[[&amp;quot;act&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;tac&amp;quot;], [&amp;quot;god&amp;quot;, &amp;quot;dog&amp;quot;]]&lt;/code>&lt;/li>
+&lt;li>Explanation: The anagram groups are:
+&lt;ul>
+&lt;li>&lt;code>[&amp;quot;act&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;tac&amp;quot;]&lt;/code>: These are anagrams of each other.&lt;/li>
+&lt;li>&lt;code>[&amp;quot;god&amp;quot;, &amp;quot;dog&amp;quot;]&lt;/code>: These are anagrams of each other.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">anagrams&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> arr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Create a map to store groups of anagrams&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>String, ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> map &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (String word : arr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Sort the characters of the word to create a key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> charArray &lt;span style="color:#f92672">=&lt;/span> word.&lt;span style="color:#a6e22e">toCharArray&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arrays.&lt;span style="color:#a6e22e">sort&lt;/span>(charArray);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String sortedWord &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(charArray);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Add the word to the corresponding group in the map&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>map.&lt;span style="color:#a6e22e">containsKey&lt;/span>(sortedWord)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(sortedWord, &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">get&lt;/span>(sortedWord).&lt;span style="color:#a6e22e">add&lt;/span>(word);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Convert the map values to a list of lists&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> result &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(map.&lt;span style="color:#a6e22e">values&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> result;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="hint">Hint&lt;/h3>
+&lt;ul>
+&lt;li>Use a hash map to group words by their sorted character representation. This ensures that all anagrams are grouped together.&lt;/li>
+&lt;/ul>
+&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Hash Map with Sorted Keys&lt;/strong>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>String on Coding Daily</title><link>http://codedaily.duckdns.org/tags/string/</link><description>Recent content in String on Coding Daily</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 09 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://codedaily.duckdns.org/tags/string/index.xml" rel="self" type="application/rss+xml"/><item><title>Counting Words With a Given Prefix</title><link>http://codedaily.duckdns.org/leetcode/2185-counting-words-with-a-given-prefix/</link><pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/2185-counting-words-with-a-given-prefix/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given an array of strings &lt;code>words&lt;/code> and a string &lt;code>pref&lt;/code>, return the number of strings in &lt;code>words&lt;/code> that contain &lt;code>pref&lt;/code> as a prefix. A prefix is any leading contiguous substring of a string.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: words = [&amp;#34;pay&amp;#34;,&amp;#34;attention&amp;#34;,&amp;#34;practice&amp;#34;,&amp;#34;attend&amp;#34;], pref = &amp;#34;at&amp;#34;
+Output: 2
+Explanation: The 2 strings that contain &amp;#34;at&amp;#34; as a prefix are: &amp;#34;attention&amp;#34; and &amp;#34;attend&amp;#34;.
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">prefixCount&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> words, String pref) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> prefLength &lt;span style="color:#f92672">=&lt;/span> pref.&lt;span style="color:#a6e22e">length&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (String word : words) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (word.&lt;span style="color:#a6e22e">length&lt;/span>() &lt;span style="color:#f92672">&amp;gt;=&lt;/span> prefLength &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> word.&lt;span style="color:#a6e22e">substring&lt;/span>(0, prefLength).&lt;span style="color:#a6e22e">equals&lt;/span>(pref)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Prefix Matching with Substring Comparison&lt;/strong>&lt;/p></description></item><item><title>Unique Substrings With Equal Digit Frequency</title><link>http://codedaily.duckdns.org/leetcode/2168-unique-substrings-with-equal-digit-frequency/</link><pubDate>Sun, 05 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/2168-unique-substrings-with-equal-digit-frequency/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a string &lt;code>s&lt;/code> consisting of digits, return the number of unique substrings where each digit occurs with equal frequency. A substring is a contiguous sequence of characters within the string.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: s = &amp;#34;12121&amp;#34;
+Output: 5
+Explanation:
+The substrings that meet the requirements are &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;12&amp;#39;, &amp;#39;21&amp;#39;, &amp;#39;1212&amp;#39;
+where &amp;#39;12&amp;#39; and &amp;#39;21&amp;#39; appear 2 times in s but they are counted only once.
+&amp;#39;121&amp;#39;, &amp;#39;12121&amp;#39; do not meet the requirement because &amp;#39;1&amp;#39; and &amp;#39;2&amp;#39; do not occur the same number of times.
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.HashSet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Set;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param s: A string
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return: number of unique substrings
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">equalDigitFrequency&lt;/span>(String s) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">length&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> uniqueSubstrings &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>10&lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#75715e">// Count frequency of digits 0-9&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> maxFreq &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> uniqueDigits &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> i; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> c &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">charAt&lt;/span>(j);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uniqueDigits&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxFreq &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">max&lt;/span>(maxFreq, count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Check if all digits in the substring have the same frequency&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (maxFreq &lt;span style="color:#f92672">*&lt;/span> uniqueDigits &lt;span style="color:#f92672">==&lt;/span> (j &lt;span style="color:#f92672">-&lt;/span> i &lt;span style="color:#f92672">+&lt;/span> 1)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uniqueSubstrings.&lt;span style="color:#a6e22e">add&lt;/span>(s.&lt;span style="color:#a6e22e">substring&lt;/span>(i, j &lt;span style="color:#f92672">+&lt;/span> 1));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> uniqueSubstrings.&lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Sliding Window with Frequency Counting&lt;/strong>&lt;/p></description></item><item><title>Unique Length-3 Palindromic Subsequences</title><link>http://codedaily.duckdns.org/leetcode/1930-unique-length-3-palindromic-subsequences/</link><pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/1930-unique-length-3-palindromic-subsequences/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a string &lt;code>s&lt;/code>, return the number of unique palindromic subsequences of length three. A palindrome reads the same forwards and backwards, and a subsequence is a sequence that can be derived from the string by deleting some or no elements without changing the order of the remaining elements.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: s = &amp;#34;aabca&amp;#34;
+Output: 3
+Explanation: The 3 palindromic subsequences of length 3 are:
+- &amp;#34;aba&amp;#34; (subsequence of &amp;#34;aabca&amp;#34;)
+- &amp;#34;aaa&amp;#34; (subsequence of &amp;#34;aabca&amp;#34;)
+- &amp;#34;aca&amp;#34; (subsequence of &amp;#34;aabca&amp;#34;)
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">countPalindromicSubsequence&lt;/span>(String s) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> firstOccurrence &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>26&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> lastOccurrence &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>26&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arrays.&lt;span style="color:#a6e22e">fill&lt;/span>(firstOccurrence, &lt;span style="color:#f92672">-&lt;/span>1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arrays.&lt;span style="color:#a6e22e">fill&lt;/span>(lastOccurrence, &lt;span style="color:#f92672">-&lt;/span>1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Record the first and last occurrence of each character&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> s.&lt;span style="color:#a6e22e">length&lt;/span>(); i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> c &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">charAt&lt;/span>(i);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (firstOccurrence&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>1) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> firstOccurrence&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lastOccurrence&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> i;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// For each character, count the unique characters between its first and last occurrence&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> 26; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (firstOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>1 &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> lastOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>1 &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> firstOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> lastOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> uniqueChars &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span>&lt;span style="color:#f92672">[&lt;/span>26&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> firstOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> 1; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> lastOccurrence&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uniqueChars&lt;span style="color:#f92672">[&lt;/span>s.&lt;span style="color:#a6e22e">charAt&lt;/span>(j) &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">boolean&lt;/span> b : uniqueChars) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (b) count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Two-Pass with First and Last Occurrence Tracking&lt;/strong>&lt;/p></description></item><item><title>Count Vowel Strings in Ranges</title><link>http://codedaily.duckdns.org/leetcode/2559-count-vowel-strings-in-ranges/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/2559-count-vowel-strings-in-ranges/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a 0-indexed array of strings &lt;code>words&lt;/code> and a 2D array of integers &lt;code>queries&lt;/code>, each query &lt;code>queries[i] = [l_i, r_i]&lt;/code> asks us to find the number of strings in the range &lt;code>[l_i, r_i]&lt;/code> (inclusive) that start and end with a vowel. The vowels are &lt;code>'a'&lt;/code>, &lt;code>'e'&lt;/code>, &lt;code>'i'&lt;/code>, &lt;code>'o'&lt;/code>, and &lt;code>'u'&lt;/code>. Return an array &lt;code>ans&lt;/code> of size &lt;code>queries.length&lt;/code>, where &lt;code>ans[i]&lt;/code> is the answer to the &lt;code>i&lt;/code>th query.&lt;/p></description></item><item><title>Perform String Shifts</title><link>http://codedaily.duckdns.org/leetcode/1427-perform-string-shifts/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/1427-perform-string-shifts/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a string &lt;code>s&lt;/code> and a list of shift operations, perform the shifts on the string and return the final result. Each shift operation is represented by an array &lt;code>[direction, amount]&lt;/code>, where &lt;code>direction&lt;/code> is &lt;code>0&lt;/code> for left shift and &lt;code>1&lt;/code> for right shift, and &lt;code>amount&lt;/code> is the number of positions to shift.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: s = &amp;#34;abc&amp;#34;, shift = [[0, 1], [1, 2]]
+Output: &amp;#34;cab&amp;#34;
+Explanation:
+- First operation shift left one bit =&amp;gt; &amp;#34;bca&amp;#34;
+- The second operation shifts right two places =&amp;gt; &amp;#34;cab&amp;#34;
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param s: the string
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param shift: the shift operations
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return: the string after shifts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">stringShift&lt;/span>(String s, &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[][]&lt;/span> shift) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> totalShift &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">length&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Calculate the net shift&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> sh : shift) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> direction &lt;span style="color:#f92672">=&lt;/span> sh&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> amount &lt;span style="color:#f92672">=&lt;/span> sh&lt;span style="color:#f92672">[&lt;/span>1&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (direction &lt;span style="color:#f92672">==&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> totalShift &lt;span style="color:#f92672">-=&lt;/span> amount;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> totalShift &lt;span style="color:#f92672">+=&lt;/span> amount;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Normalize the total shift to be within the length of the string&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> totalShift &lt;span style="color:#f92672">%=&lt;/span> n;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (totalShift &lt;span style="color:#f92672">&amp;lt;&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> totalShift &lt;span style="color:#f92672">+=&lt;/span> n;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Perform the shift&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String result &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">substring&lt;/span>(n &lt;span style="color:#f92672">-&lt;/span> totalShift) &lt;span style="color:#f92672">+&lt;/span> s.&lt;span style="color:#a6e22e">substring&lt;/span>(0, n &lt;span style="color:#f92672">-&lt;/span> totalShift);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> result;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Net Shift Calculation and Normalization&lt;/strong>&lt;/p></description></item><item><title>Maximum Score After Splitting a String</title><link>http://codedaily.duckdns.org/leetcode/1422-maximum-score-after-splitting-a-string/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/1422-maximum-score-after-splitting-a-string/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a string &lt;code>s&lt;/code> consisting of zeros and ones, the task is to split the string into two non-empty substrings (left and right) such that the score is maximized. The score is calculated as the number of zeros in the left substring plus the number of ones in the right substring.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: s = &amp;#34;011101&amp;#34;
+Output: 5 
+Explanation: 
+All possible ways of splitting s into two non-empty substrings are:
+left = &amp;#34;0&amp;#34; and right = &amp;#34;11101&amp;#34;, score = 1 + 4 = 5 
+left = &amp;#34;01&amp;#34; and right = &amp;#34;1101&amp;#34;, score = 1 + 3 = 4 
+left = &amp;#34;011&amp;#34; and right = &amp;#34;101&amp;#34;, score = 1 + 2 = 3 
+left = &amp;#34;0111&amp;#34; and right = &amp;#34;01&amp;#34;, score = 1 + 1 = 2 
+left = &amp;#34;01110&amp;#34; and right = &amp;#34;1&amp;#34;, score = 2 + 1 = 3
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">maxScore&lt;/span>(String s) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> totalOnes &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">char&lt;/span> c : s.&lt;span style="color:#a6e22e">toCharArray&lt;/span>()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (c &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> totalOnes&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> maxScore &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> zeros &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> ones &lt;span style="color:#f92672">=&lt;/span> totalOnes;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> s.&lt;span style="color:#a6e22e">length&lt;/span>() &lt;span style="color:#f92672">-&lt;/span> 1; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (s.&lt;span style="color:#a6e22e">charAt&lt;/span>(i) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> zeros&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ones&lt;span style="color:#f92672">--&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxScore &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">max&lt;/span>(maxScore, zeros &lt;span style="color:#f92672">+&lt;/span> ones);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> maxScore;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Prefix Sum Approach&lt;/strong>&lt;/p></description></item></channel></rss>

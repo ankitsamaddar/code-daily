@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rolling-Hash on Coding Daily</title><link>http://codedaily.duckdns.org/tags/rolling-hash/</link><description>Recent content in Rolling-Hash on Coding Daily</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 05 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://codedaily.duckdns.org/tags/rolling-hash/index.xml" rel="self" type="application/rss+xml"/><item><title>Unique Substrings With Equal Digit Frequency</title><link>http://codedaily.duckdns.org/leetcode/2168-unique-substrings-with-equal-digit-frequency/</link><pubDate>Sun, 05 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/2168-unique-substrings-with-equal-digit-frequency/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a string &lt;code>s&lt;/code> consisting of digits, return the number of unique substrings where each digit occurs with equal frequency. A substring is a contiguous sequence of characters within the string.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: s = &amp;#34;12121&amp;#34;
+Output: 5
+Explanation:
+The substrings that meet the requirements are &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;12&amp;#39;, &amp;#39;21&amp;#39;, &amp;#39;1212&amp;#39;
+where &amp;#39;12&amp;#39; and &amp;#39;21&amp;#39; appear 2 times in s but they are counted only once.
+&amp;#39;121&amp;#39;, &amp;#39;12121&amp;#39; do not meet the requirement because &amp;#39;1&amp;#39; and &amp;#39;2&amp;#39; do not occur the same number of times.
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.HashSet;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Set;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param s: A string
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return: number of unique substrings
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">equalDigitFrequency&lt;/span>(String s) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">length&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> uniqueSubstrings &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>10&lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#75715e">// Count frequency of digits 0-9&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> maxFreq &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> uniqueDigits &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> i; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> c &lt;span style="color:#f92672">=&lt;/span> s.&lt;span style="color:#a6e22e">charAt&lt;/span>(j);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uniqueDigits&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxFreq &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">max&lt;/span>(maxFreq, count&lt;span style="color:#f92672">[&lt;/span>c &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#e6db74">&amp;#39;0&amp;#39;&lt;/span>&lt;span style="color:#f92672">]&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Check if all digits in the substring have the same frequency&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (maxFreq &lt;span style="color:#f92672">*&lt;/span> uniqueDigits &lt;span style="color:#f92672">==&lt;/span> (j &lt;span style="color:#f92672">-&lt;/span> i &lt;span style="color:#f92672">+&lt;/span> 1)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uniqueSubstrings.&lt;span style="color:#a6e22e">add&lt;/span>(s.&lt;span style="color:#a6e22e">substring&lt;/span>(i, j &lt;span style="color:#f92672">+&lt;/span> 1));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> uniqueSubstrings.&lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Sliding Window with Frequency Counting&lt;/strong>&lt;/p></description></item></channel></rss>

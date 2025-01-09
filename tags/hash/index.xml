@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hash on Coding Daily</title><link>http://codedaily.duckdns.org/tags/hash/</link><description>Recent content in Hash on Coding Daily</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://codedaily.duckdns.org/tags/hash/index.xml" rel="self" type="application/rss+xml"/><item><title>Count all triplets with given sum in sorted array</title><link>http://codedaily.duckdns.org/geeksforgeeks/count-all-triplets-with-given-sum-in-sorted-array/</link><pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/geeksforgeeks/count-all-triplets-with-given-sum-in-sorted-array/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given a sorted array of integers and a target value, count the number of triplets &lt;code>(i, j, k)&lt;/code> such that &lt;code>arr[i] + arr[j] + arr[k] = target&lt;/code> and &lt;code>i &amp;lt; j &amp;lt; k&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Input: &lt;code>arr[] = [-3, -1, -1, 0, 1, 2]&lt;/code>, &lt;code>target = -2&lt;/code>&lt;/li>
+&lt;li>Output: &lt;code>4&lt;/code>&lt;/li>
+&lt;li>Explanation: The valid triplets are:
+&lt;ul>
+&lt;li>&lt;code>(-3) + 0 + 1 = -2&lt;/code>&lt;/li>
+&lt;li>&lt;code>(-3) + (-1) + 2 = -2&lt;/code>&lt;/li>
+&lt;li>&lt;code>(-3) + (-1) + 2 = -2&lt;/code>&lt;/li>
+&lt;li>&lt;code>(-1) + (-1) + 0 = -2&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Arrays;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">countTriplets&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> arr, &lt;span style="color:#66d9ef">int&lt;/span> target) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arrays.&lt;span style="color:#a6e22e">sort&lt;/span>(arr); &lt;span style="color:#75715e">// Ensure the array is sorted&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> arr.&lt;span style="color:#a6e22e">length&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> 0; &lt;span style="color:#75715e">// To store the count of valid triplets&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> n &lt;span style="color:#f92672">-&lt;/span> 2; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> left &lt;span style="color:#f92672">=&lt;/span> i &lt;span style="color:#f92672">+&lt;/span> 1; &lt;span style="color:#75715e">// Pointer to the element next to arr[i]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> right &lt;span style="color:#f92672">=&lt;/span> n &lt;span style="color:#f92672">-&lt;/span> 1; &lt;span style="color:#75715e">// Pointer to the last element&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (left &lt;span style="color:#f92672">&amp;lt;&lt;/span> right) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sum &lt;span style="color:#f92672">=&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>left&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>right&lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#75715e">// Calculate the current sum&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (sum &lt;span style="color:#f92672">==&lt;/span> target) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// If the sum equals the target, count all valid triplets&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (arr&lt;span style="color:#f92672">[&lt;/span>left&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>right&lt;span style="color:#f92672">]&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// If all elements between left and right are the same, calculate the number of triplets&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> m &lt;span style="color:#f92672">=&lt;/span> right &lt;span style="color:#f92672">-&lt;/span> left &lt;span style="color:#f92672">+&lt;/span> 1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> m &lt;span style="color:#f92672">*&lt;/span> (m &lt;span style="color:#f92672">-&lt;/span> 1) &lt;span style="color:#f92672">/&lt;/span> 2; &lt;span style="color:#75715e">// Combination formula for mC2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Count all triplets with the same values as arr[left] and arr[right]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> leftVal &lt;span style="color:#f92672">=&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>left&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> rightVal &lt;span style="color:#f92672">=&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>right&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> leftCount &lt;span style="color:#f92672">=&lt;/span> 0, rightCount &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (left &lt;span style="color:#f92672">&amp;lt;&lt;/span> n &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>left&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> leftVal) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> left&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> leftCount&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (right &lt;span style="color:#f92672">&amp;gt;=&lt;/span> 0 &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> arr&lt;span style="color:#f92672">[&lt;/span>right&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">==&lt;/span> rightVal) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> right&lt;span style="color:#f92672">--&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rightCount&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> leftCount &lt;span style="color:#f92672">*&lt;/span> rightCount;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (sum &lt;span style="color:#f92672">&amp;lt;&lt;/span> target) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> left&lt;span style="color:#f92672">++&lt;/span>; &lt;span style="color:#75715e">// Move left pointer to increase the sum&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> right&lt;span style="color:#f92672">--&lt;/span>; &lt;span style="color:#75715e">// Move right pointer to decrease the sum&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="hint">Hint&lt;/h3>
+&lt;ul>
+&lt;li>Sort the array and use a nested loop with two pointers to efficiently count the number of triplets whose sum equals the target.&lt;/li>
+&lt;/ul>
+&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Two-Pointer Technique with Sorting&lt;/strong>&lt;/p></description></item><item><title>Subarrays with sum K</title><link>http://codedaily.duckdns.org/geeksforgeeks/subarrays-with-sum-k/</link><pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/geeksforgeeks/subarrays-with-sum-k/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given an unsorted array of integers, find the number of continuous subarrays whose sum is exactly equal to a given number &lt;strong>k&lt;/strong>.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Input: &lt;code>arr = [10, 2, -2, -20, 10]&lt;/code>, &lt;code>k = -10&lt;/code>&lt;/li>
+&lt;li>Output: &lt;code>3&lt;/code>&lt;/li>
+&lt;li>Explanation: The subarrays are:
+&lt;ul>
+&lt;li>&lt;code>arr[0...3]&lt;/code>: &lt;code>10 + 2 + (-2) + (-20) = -10&lt;/code>&lt;/li>
+&lt;li>&lt;code>arr[1...4]&lt;/code>: &lt;code>2 + (-2) + (-20) + 10 = -10&lt;/code>&lt;/li>
+&lt;li>&lt;code>arr[3...4]&lt;/code>: &lt;code>-20 + 10 = -10&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.HashMap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">countSubarrays&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> arr&lt;span style="color:#f92672">[]&lt;/span>, &lt;span style="color:#66d9ef">int&lt;/span> k) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HashMap&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer, Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> prefixSumMap &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(); &lt;span style="color:#75715e">// To store prefix sums and their frequencies&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> prefixSumMap.&lt;span style="color:#a6e22e">put&lt;/span>(0, 1); &lt;span style="color:#75715e">// Initialize with prefix sum 0 occurring once&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> prefixSum &lt;span style="color:#f92672">=&lt;/span> 0; &lt;span style="color:#75715e">// To store the running prefix sum&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> 0; &lt;span style="color:#75715e">// To store the count of subarrays with sum k&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> num : arr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> prefixSum &lt;span style="color:#f92672">+=&lt;/span> num; &lt;span style="color:#75715e">// Update the running prefix sum&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// If (prefixSum - k) exists in the map, it means there are subarrays ending at the current index with sum k&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (prefixSumMap.&lt;span style="color:#a6e22e">containsKey&lt;/span>(prefixSum &lt;span style="color:#f92672">-&lt;/span> k)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> prefixSumMap.&lt;span style="color:#a6e22e">get&lt;/span>(prefixSum &lt;span style="color:#f92672">-&lt;/span> k);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Update the frequency of the current prefix sum in the map&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> prefixSumMap.&lt;span style="color:#a6e22e">put&lt;/span>(prefixSum, prefixSumMap.&lt;span style="color:#a6e22e">getOrDefault&lt;/span>(prefixSum, 0) &lt;span style="color:#f92672">+&lt;/span> 1);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="hint">Hint&lt;/h3>
+&lt;ul>
+&lt;li>Use a hash map to store the frequency of prefix sums. This helps in efficiently finding the number of subarrays that sum to &lt;strong>k&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Prefix Sum with Hash Map&lt;/strong>&lt;/p></description></item><item><title>Print Anagrams Together</title><link>http://codedaily.duckdns.org/geeksforgeeks/print-anagrams-together/</link><pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/geeksforgeeks/print-anagrams-together/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given an array of strings, group all anagrams together. Anagrams are words that contain the same characters but in a different order. The groups should maintain the order of their appearance in the original array.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Input: &lt;code>arr[] = [&amp;quot;act&amp;quot;, &amp;quot;god&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;dog&amp;quot;, &amp;quot;tac&amp;quot;]&lt;/code>&lt;/li>
+&lt;li>Output: &lt;code>[[&amp;quot;act&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;tac&amp;quot;], [&amp;quot;god&amp;quot;, &amp;quot;dog&amp;quot;]]&lt;/code>&lt;/li>
+&lt;li>Explanation: The anagram groups are:
+&lt;ul>
+&lt;li>&lt;code>[&amp;quot;act&amp;quot;, &amp;quot;cat&amp;quot;, &amp;quot;tac&amp;quot;]&lt;/code>: These are anagrams of each other.&lt;/li>
+&lt;li>&lt;code>[&amp;quot;god&amp;quot;, &amp;quot;dog&amp;quot;]&lt;/code>: These are anagrams of each other.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">anagrams&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> arr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Create a map to store groups of anagrams&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>String, ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> map &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (String word : arr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Sort the characters of the word to create a key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> charArray &lt;span style="color:#f92672">=&lt;/span> word.&lt;span style="color:#a6e22e">toCharArray&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arrays.&lt;span style="color:#a6e22e">sort&lt;/span>(charArray);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String sortedWord &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(charArray);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Add the word to the corresponding group in the map&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>map.&lt;span style="color:#a6e22e">containsKey&lt;/span>(sortedWord)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">put&lt;/span>(sortedWord, &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> map.&lt;span style="color:#a6e22e">get&lt;/span>(sortedWord).&lt;span style="color:#a6e22e">add&lt;/span>(word);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Convert the map values to a list of lists&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> result &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(map.&lt;span style="color:#a6e22e">values&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> result;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="hint">Hint&lt;/h3>
+&lt;ul>
+&lt;li>Use a hash map to group words by their sorted character representation. This ensures that all anagrams are grouped together.&lt;/li>
+&lt;/ul>
+&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Hash Map with Sorted Keys&lt;/strong>&lt;/p></description></item></channel></rss>

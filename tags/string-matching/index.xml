@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>String-Matching on Coding Daily</title><link>http://codedaily.duckdns.org/tags/string-matching/</link><description>Recent content in String-Matching on Coding Daily</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 09 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://codedaily.duckdns.org/tags/string-matching/index.xml" rel="self" type="application/rss+xml"/><item><title>Counting Words With a Given Prefix</title><link>http://codedaily.duckdns.org/leetcode/2185-counting-words-with-a-given-prefix/</link><pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate><guid>http://codedaily.duckdns.org/leetcode/2185-counting-words-with-a-given-prefix/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;h3 id="problem-description">Problem Description&lt;/h3>
+&lt;p>Given an array of strings &lt;code>words&lt;/code> and a string &lt;code>pref&lt;/code>, return the number of strings in &lt;code>words&lt;/code> that contain &lt;code>pref&lt;/code> as a prefix. A prefix is any leading contiguous substring of a string.&lt;/p>
+&lt;p>&lt;strong>Example:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>Input: words = [&amp;#34;pay&amp;#34;,&amp;#34;attention&amp;#34;,&amp;#34;practice&amp;#34;,&amp;#34;attend&amp;#34;], pref = &amp;#34;at&amp;#34;
+Output: 2
+Explanation: The 2 strings that contain &amp;#34;at&amp;#34; as a prefix are: &amp;#34;attention&amp;#34; and &amp;#34;attend&amp;#34;.
+&lt;/code>&lt;/pre>&lt;h3 id="solution-code">Solution Code&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">prefixCount&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> words, String pref) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> prefLength &lt;span style="color:#f92672">=&lt;/span> pref.&lt;span style="color:#a6e22e">length&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (String word : words) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (word.&lt;span style="color:#a6e22e">length&lt;/span>() &lt;span style="color:#f92672">&amp;gt;=&lt;/span> prefLength &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> word.&lt;span style="color:#a6e22e">substring&lt;/span>(0, prefLength).&lt;span style="color:#a6e22e">equals&lt;/span>(pref)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="approach-name">Approach Name&lt;/h3>
+&lt;p>&lt;strong>Prefix Matching with Substring Comparison&lt;/strong>&lt;/p></description></item></channel></rss>
